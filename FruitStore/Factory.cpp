@@ -1,6 +1,6 @@
 #include "Factory.h"
 
-Fruit* Factory::factory(Type type)
+Fruit* Factory::factory(const FruitType& type)
 {
 	switch (type) {
 	case(FruitType::Ananas):

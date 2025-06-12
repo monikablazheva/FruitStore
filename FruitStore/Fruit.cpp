@@ -54,7 +54,7 @@ void Fruit::setType(const FruitType& type) {
 void Fruit::copyFrom(const Fruit& other)
 {
 	try {
-		name = new char[strlen(other.name)] {}; //may trow bad_alloc ex
+		name = new char[strlen(other.name) + 1] {}; //may trow bad_alloc ex
 		strcpy(name, other.name);
 		
 		price = other.price;
@@ -93,7 +93,7 @@ void Fruit::setName(const char* name)
 		}
 		else {
 			delete[] this->name;
-			this->name = new char[strlen(name)] {}; //may trow bad_alloc ex
+			this->name = new char[strlen(name) + 1] {}; //may trow bad_alloc ex
 			strcpy(this->name, name);
 		}
 	}
@@ -101,6 +101,9 @@ void Fruit::setName(const char* name)
 		std::cout << ex.what() << std::endl;
 	}
 	catch (const std::bad_alloc& ex) {
+		std::cout << ex.what() << std::endl;
+	}
+	catch (std::exception ex) {
 		std::cout << ex.what() << std::endl;
 	}
 }
